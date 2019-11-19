@@ -27,46 +27,63 @@ namespace leeftijdtweede
     {
         static void Main(string[] args)
         {
-            //Declaraties
+
+            //DECLARATIES
             //inputvariabelen
-            string naam, geboortedatuminvoer;
+            string naam, geboortedatumInvoer;
+
             //processingvariabelen
-            DateTime geboortedatum, huidigedatum;
-            ushort geboortejaar, huidigjaartal;
-            byte leeftijd;
+            DateTime geboortedatum, huidigeDatum;
+            ushort geboortedatums, huidigdatums, geboortejaar, huidigjaartal;
+            byte leeftijd1, leeftijd2, leeftijd3;
+
             //outputvariabelen
             string uitvoer;
-
-            //input
-            //vraag naam
-            Console.Write("geef uw naam?: ");
+            //INPUT
+            // VRAAG naam
+            Console.Write("Geef uw naam in, a.u.b.: ");
             naam = Console.ReadLine();
 
-            //vraag geboortedatum
-            Console.Write("wat is uw geboortedatum");
-            geboortedatuminvoer = Console.ReadLine();
+            // VRAAG geboortedatum
+            Console.Write("Geef uw geboortedatum, a.u.b.: ");
+            geboortedatumInvoer = Console.ReadLine();
 
-            //pocessing 
-            //parsen van input
-            geboortedatum = DateTime.Parse(geboortedatuminvoer);
-            //bereken huidig jaartal
-            huidigedatum = DateTime.Today;
-            huidigjaartal = (ushort)huidigedatum.Year;
+            //PROCESSING
+            // Parsen van input
+            geboortedatum = DateTime.Parse(geboortedatumInvoer);
 
+            // BEREKEN huidigJaartal (huidigeDatum.Year)
+            huidigeDatum = DateTime.Today;
+            huidigdatums = (ushort)huidigeDatum.Day;
+            huidigjaartal = (ushort)huidigeDatum.Year;
 
-            //bereken geboortejaar
+            // BEREKEN geboortejaar (geboortedatum.Year)
+            geboortedatums = (ushort)geboortedatum.Day;
             geboortejaar = (ushort)geboortedatum.Year;
-            //bereken leeftijd
-            leeftijd = (byte)((int)huidigjaartal - (int)geboortejaar);
-            //bereken uitvoer
-            uitvoer = $"{naam},u bent {leeftijd} jaar oud.";
-            //output
-            //toon uitvoer
+
+
+
+            // BEREKEN leeftijd (huidigJaartal - geboortejaar)
+            leeftijd1 = (byte)((int)huidigdatums - (int)geboortedatums);
+            leeftijd2 = (byte)((int)huidigjaartal - (int)geboortejaar);
+
+            if (huidigdatums < geboortedatums)
+            {
+                leeftijd2 = (byte)(leeftijd2 - 1);
+            }
+
+
+            // BEREKEN uitvoer (= "<naam>, u bent <leeftijd> jaar oud.")
+            uitvoer = $"{naam}, u bent {leeftijd2}jaar en{leeftijd1} dagen oud.";
+
+
+            //OUTPUT
+            // TOON uitvoer
             Console.WriteLine(uitvoer);
 
-            //wachten
+            //Wachten...
             Console.WriteLine();
-            Console.WriteLine("druk op enter om af te sluiten");
+            Console.Write("Druk op Enter om af te sluiten... ");
             Console.ReadLine();
         }
 
